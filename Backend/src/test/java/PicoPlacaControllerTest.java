@@ -38,7 +38,7 @@ public class PicoPlacaControllerTest {
         PredictionResponse response = new PredictionResponse(false, "The car can NOT drive at ... on ....");
 
         Mockito.when(picoPlacaService.canDrive(Mockito.any())).thenReturn(response);
-        mockMvc.perform(post("/api/predict")
+        mockMvc.perform(post("/predict")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(request)))
                 .andExpect(status().isOk())
@@ -52,7 +52,7 @@ public class PicoPlacaControllerTest {
         PredictionResponse response = new PredictionResponse(true, "The car can drive normally.");
 
         Mockito.when(picoPlacaService.canDrive(Mockito.any())).thenReturn(response);
-        mockMvc.perform(post("/api/predict")
+        mockMvc.perform(post("/predict")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(request)))
                 .andExpect(status().isOk())
