@@ -1,6 +1,6 @@
 # Pico y Placa Backend
 
-This project is an application designed to predict whether a vehicle can circulate based on the **“Pico y Placa”** restrictions. The prediction is determined by the day of the week, the vehicle's license plate number, and the time of day.
+This project is an application designed to predict whether a vehicle can circulate based on the **Pico y Placa** restrictions. The prediction is determined by the day of the week, the vehicle's license plate number, and the time of day.
 
 ## Table of Contents
 
@@ -14,9 +14,7 @@ This project is an application designed to predict whether a vehicle can circula
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Running the Application](#running-the-application)
-    - [Using Maven](#using-maven)
-    - [Using the Executable JAR](#using-the-executable-jar)
-    - [Accessing the API](#accessing-the-api)
+    - [Download and Run Docker Containers](#download-and-run-docker-containers)
   - [API Documentation](#api-documentation)
     - [Endpoint: Predict Circulation](#endpoint-predict-circulation)
       - [Request Body](#request-body)
@@ -27,26 +25,27 @@ This project is an application designed to predict whether a vehicle can circula
     - [Running Tests](#running-tests)
     - [Test Cases](#test-cases)
 
-
+---
 
 ## Technologies Used
 
-- **Java**: Primary programming language.
+- **Java**: Main backend programming language.
 - **Spring Boot**: Framework for building the backend application.
 - **JUnit 5 & Mockito**: For unit and integration testing.
-- **HTML, CSS, JS, Bootstrap**: Design Frontend.
+- **HTML, CSS, JS, Bootstrap**: Frontend technologies.
+- **Docker**: For containerization and deployment.
 - **Maven**: Dependency management and build tool.
 
 ## Architecture
 
-The application follows a **N-layered architecture**, ensuring separation of concerns and scalability.
+The application follows an **N-layered architecture**, ensuring separation of concerns and scalability.
 
-![Architecture](./Images/Architecture.png)
+![Architecture](https://github.com/user-attachments/assets/5330ef5c-7121-400b-9f0e-b164182ee75d)
 
 ### Key Layers
 
 - **Controller**: Handles incoming HTTP requests and responses.
-- **Service**: Contains the business logic for predicting restrictions.
+- **Service**: Contains the business logic for predicting circulation restrictions.
 - **Model**: Defines data structures for requests and responses.
 - **Exception**: Manages custom exceptions and global error handling.
 - **Utils**: Provides utility functions such as date parsing and validation.
@@ -64,15 +63,15 @@ Pico-Plate-Predictor/
 │   ├── styles.css
 │   └── scripts.js
 ├── README.md                  # Readme
-└── .gitignore                 # Ignore files unnecesary
+│── docker-compose.yml         # Configurations
+└── .gitignore                 # Ignore unnecessary files
 ```
 
 ## Prerequisites
 
-Before you begin, ensure you have met the following requirements:
+Before you begin, ensure you have the following installed:
 
-- **Java Development Kit (JDK) 17 or higher**: [Download JDK](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
-- **Maven**: Ensure Maven is installed and configured. [Maven Installation Guide](https://maven.apache.org/install.html)
+- **Docker**: Install Docker on your machine. [Docker Installation Guide](https://docs.docker.com/get-docker/).
 
 ## Installation
 
@@ -83,45 +82,38 @@ Before you begin, ensure you have met the following requirements:
    cd Pico-Plate-Predictor
    ```
 
-2. **Build the Project**
-
-   Use Maven to build the project and download dependencies.
-
-   ```bash
-   mvn clean install
-   ```
-
 ## Configuration
 
-1. **Application Properties**
+No need to modify any configuration files as the project is pre-configured to run using Docker.
 
-   The application uses `application.yml` for configuration. You can find it under `src/main/resources/`. You can change the port if you want
-   ```properties
-   # Server Configuration
-   server:
-    port: 8080
-   ```
 ## Running the Application
 
-You can run the application using Maven or your preferred IDE.
+### Download and Run Docker Containers
 
-### Using Maven
+Instead of building and running the application manually, you can run the pre-built Docker containers for both the backend and frontend.
 
-```bash
-mvn spring-boot:run
-```
+#### 1. **Download and run the backend container**:
 
-### Using the Executable JAR
+   ```bash
+   docker pull ricardocr98/pico-placa-backend:latest
+   docker run -d -p 8080:8080 ricardocr98/pico-placa-backend:latest
+   ```
 
-After building the project, you can run the JAR file.
+   - This will download the backend image and run it in the background, exposing it on port **8080**.
 
-```bash
-java -jar target/Pico-Plate-Backend-0.0.1-SNAPSHOT.jar
-```
+#### 2. **Download and run the frontend container**:
 
-### Accessing the API
+   ```bash
+   docker pull ricardocr98/pico-placa-frontend:latest
+   docker run -d -p 80:80 ricardocr98/pico-placa-frontend:latest
+   ```
 
-Once the application is running, access the API at `http://localhost:8080`.
+   - This will download the frontend image and run it, exposing it on port **80**.
+
+#### 3. **Access the application**:
+
+   - **Backend**: Access the backend API at `http://localhost:8080`.
+   - **Frontend**: Open your browser and navigate to `http://localhost` to interact with the application.
 
 ## API Documentation
 
@@ -147,14 +139,15 @@ Once the application is running, access the API at `http://localhost:8080`.
 
 #### Response
 
-If the response is TRUE:
+If the response is **TRUE**:
 ```json
 {
   "canDrive": true,
   "message": "The vehicle with plate number ABC-1234 is ALLOWED to drive on SATURDAY at 08:30."
 }
 ```
-If the response is FALSE:
+
+If the response is **FALSE**:
 ```json
 {
   "canDrive": false,
@@ -162,19 +155,11 @@ If the response is FALSE:
 }
 ```
 
-- **canDrive**: `Boolean` - Indicates if the vehicle can circulate.
-- **message**: `String` - Detailed message about the restriction status.
-
 #### Example using `curl`
+For windows:
 
 ```bash
-curl -X POST http://localhost:8080/predict \
-     -H "Content-Type: application/json" \
-     -d '{
-              "licensePlateNumber": "ABC-1234",
-              "date": "27-04-2024",
-              "time": "08:30"
-         }'
+curl --location "http://localhost:8080/predict" ^ --header "Content-Type: application/json" ^ --data "{\"licensePlateNumber\":\"PBM-1233\", \"date\":\"17-09-2024\", \"time\":\"07:38\"}"
 ```
 
 ## Automated Testing
