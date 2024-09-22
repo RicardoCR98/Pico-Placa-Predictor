@@ -177,6 +177,7 @@ The project includes comprehensive automated tests to ensure functionality and r
 Execute the following Maven command to run all tests:
 
 ```bash
+cd .\Pico-Placa-Predictor\Backend
 mvn test
 ```
 
