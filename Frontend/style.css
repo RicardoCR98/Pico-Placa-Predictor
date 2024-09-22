@@ -14,10 +14,3 @@ footer {
     padding: 10px;
     text-align: center;
 }
-.server-note {
-    position: fixed;
-    bottom: 65px;
-    right: 20px;
-    font-size: 12px;
-    color: #888;
-}

@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log('Prediction Result:', data);
                 const resultDiv = document.getElementById('result');    
-                data.canDrive ? resultDiv.classList.add('text-success') : resultDiv.classList.add('text-danger')
+                const successClass = 'text-success';
+                const dangerClass = 'text-danger';
+                resultDiv.classList.remove(successClass, dangerClass);
+                resultDiv.classList.add(data.canDrive ? successClass : dangerClass);
                 resultDiv.textContent = data.message;
             })
             .catch(error => {
