@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 date:formattedDate,
                 time: timeInput
             };
-            fetch('http://backend:8080/predict', { //Here change de url
+            fetch('http://localhost:8080/predict', { //Here change de url
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
