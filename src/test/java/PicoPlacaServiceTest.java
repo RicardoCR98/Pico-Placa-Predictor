@@ -31,7 +31,7 @@ public class PicoPlacaServiceTest {
 
     @Test
     public void testNotRestrictedOutsideHours() {
-        PredictionRequest request = new PredictionRequest("ABC-1234","17-09-2024","10:00");
+        PredictionRequest request = new PredictionRequest("ABC-1234","17-09-2024","09:30");
         PredictionResponse response  = picoPlacaService.canDrive(request);
         assertTrue(response.isCanDrive());
     }
