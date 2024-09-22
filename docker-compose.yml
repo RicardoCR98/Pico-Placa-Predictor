@@ -1,7 +1,6 @@
 services:  
   backend:    
-    build:      
-      context: ./Backend    
+    image: ricardocr98/pico-placa-backend:latest  
     ports:      
       - "8080:8080"    
     networks:      
@@ -9,19 +8,16 @@ services:
     restart: always
   
   frontend:    
-    build:      
-      context: ./Frontend    
+    image: ricardocr98/pico-placa-frontend:latest
     ports:      
       - "80:80"    
     networks:      
       - app-network
-    restart: always
     volumes:
-      - ./Frontend/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - backend 
-  
+      - ./Frontend/nginx.conf:/etc/nginx/nginx.conf 
+    restart: always
+
 networks:       
-  app-network:    
+  app-network:
     name: app-network
     driver: bridge
