@@ -1,18 +1,26 @@
+# Java and Maven
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+*.log
+*.class
+*.jar
+*.war
+*.ear
 
-### IntelliJ IDEA ###
+# IntelliJ IDEA
+.idea/*
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/encodings.xml
 *.iws
 *.iml
 *.ipr
 
-### Eclipse ###
+# Eclipse
 .apt_generated
 .classpath
 .factorypath
@@ -21,7 +29,7 @@ target/
 .springBeans
 .sts4-cache
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -31,8 +39,43 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+# Visual Studio Code
 .vscode/
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
 
-### Mac OS ###
+# Node (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+*.log
+
+# Mac OS
 .DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Frontend specific (HTML/CSS projects)
+/frontend/node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Backend specific
+Backend/.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+
+
+#General
+Pico-Placa-Predictor/.idea/
+/.idea/
