@@ -102,7 +102,9 @@ You can run the pre-built Docker containers for both the backend and frontend us
    Simply run the following command to start the application using Docker Compose:
 
    ```bash
-   docker-compose up
+git clone https://github.com/RicardoCR98/Pico-Placa-Predictor.git
+cd Pico-Plate-Predictor
+docker-compose up
    ```
 
    - This will download the images from Docker Hub and run the frontend and backend containers, exposing the backend on port **8080** and the frontend on port **80**.
