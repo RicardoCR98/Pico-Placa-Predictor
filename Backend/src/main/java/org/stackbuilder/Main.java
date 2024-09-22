@@ -16,13 +16,13 @@ public class Main {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(false);  // No estamos usando credenciales
-        config.addAllowedOrigin("*");  // Permitir solicitudes desde http://localhost
-        config.addAllowedHeader("*");  // Permitir todos los encabezados
-        config.addAllowedMethod("*");  // Permitir todos los métodos (GET, POST, etc.)
+        config.setAllowCredentials(false);  
+        config.addAllowedOrigin("*"); 
+        config.addAllowedHeader("*"); 
+        config.addAllowedMethod("*");  
         config.addAllowedMethod("OPTIONS");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);  // Aplicar CORS a todas las rutas
+        source.registerCorsConfiguration("/**", config); 
         return new CorsFilter(source);
     }
 }
