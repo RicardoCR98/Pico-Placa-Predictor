@@ -4,8 +4,6 @@ This project is an application designed to predict whether a vehicle can circula
 
 ## Table of Contents
 
-- [Pico y Placa Backend](#pico-y-placa-backend)
-  - [Table of Contents](#table-of-contents)
   - [Technologies Used](#technologies-used)
   - [Architecture](#architecture)
     - [Key Layers](#key-layers)
