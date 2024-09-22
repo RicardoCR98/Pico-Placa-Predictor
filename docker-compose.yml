@@ -6,8 +6,7 @@ services:
       - "8080:8080"    
     networks:      
       - app-network    
-    depends_on:      
-      - frontend  
+    restart: always
   
   frontend:    
     build:      
@@ -16,7 +15,13 @@ services:
       - "80:80"    
     networks:      
       - app-network
-    
+    restart: always
+    volumes:
+      - ./Frontend/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend 
+  
 networks:       
   app-network:    
+    name: app-network
     driver: bridge
