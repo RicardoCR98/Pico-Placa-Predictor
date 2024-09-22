@@ -1,6 +1,7 @@
 package org.stackbuilder.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import org.stackbuilder.model.PredictionResponse;
 import org.stackbuilder.service.PicoPlacaService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost") 
 public class PicoPlacaController {
 
     private final PicoPlacaService picoPlacaService;
