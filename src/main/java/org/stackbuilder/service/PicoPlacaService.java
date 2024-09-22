@@ -48,10 +48,10 @@ public class PicoPlacaService {
 
     private boolean isWithinRestrictedHours(LocalTime time) {
         //Here apply the rule for hours
-        LocalTime morningStart = LocalTime.of(6,0);
+        LocalTime morningStart = LocalTime.of(7,0);
         LocalTime morningEnd = LocalTime.of(9,30);
         LocalTime afternoonStart = LocalTime.of(16,0);
-        LocalTime afternoonEnd = LocalTime.of(20,0);
+        LocalTime afternoonEnd = LocalTime.of(19,30);
 
         boolean morning=time.isAfter(morningStart.minusSeconds(1))&&time.isBefore(morningEnd.minusSeconds(1));
         boolean afternoon=time.isAfter(afternoonStart.minusSeconds(1))&&time.isBefore(afternoonEnd.minusSeconds(1));
