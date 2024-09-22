@@ -16,11 +16,11 @@ public class Main {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(false);  
-        config.addAllowedOrigin("*"); 
+        config.setAllowCredentials(true);  
+        config.addAllowedOrigin("*");
         config.addAllowedHeader("*"); 
-        config.addAllowedMethod("*");  
-        config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("*");
+        
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config); 
         return new CorsFilter(source);
