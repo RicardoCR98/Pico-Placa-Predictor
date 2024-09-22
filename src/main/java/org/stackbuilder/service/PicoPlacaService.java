@@ -15,11 +15,16 @@ import java.time.LocalTime;
 public class PicoPlacaService {
 
     public PredictionResponse canDrive(PredictionRequest request) {
-        // Validate plate format
+        // Validate plate format, date and time
         if(!LicensePlateValidator.isValid(request.getLicensePlateNumber())){
             throw new InvalidInputException("Invalid Format");
         }
-        //As it is an 1 entry manual then just validte plate format
+        if (request.getDate() == null || request.getDate().isEmpty()) {
+            throw new InvalidInputException("Invalid Format");
+        }
+        if (request.getTime() == null || request.getTime().isEmpty()) {
+            throw new InvalidInputException("Invalid Format");
+        }
         // Parse date and time
         LocalDate date = DateTimeParser.parseDate(request.getDate());
         LocalTime time = DateTimeParser.parseTime(request.getTime());
@@ -33,7 +38,9 @@ public class PicoPlacaService {
 
         //Validate if the last number is restricted
         boolean isRestricted = isPlateRestricted(lastDigit,dayOfWeek) && isWithinRestrictedHours(time);
-        String message = isRestricted ? "The car can NOT drive at ... on ...." : "The car can drive normally.";
+        String message = isRestricted
+                ? "The vehicle with plate number " + request.getLicensePlateNumber() + " is RESTRICTED from driving on " + dayOfWeek + " at " + time + "."
+                : "The vehicle with plate number " + request.getLicensePlateNumber() + " is ALLOWED to drive on " + dayOfWeek + " at " + time + ".";
 
         // Return the response with the result
         return new PredictionResponse(!isRestricted,message);
