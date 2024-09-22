@@ -68,7 +68,8 @@ Pico-Plate-Predictor/
 │   ├── nginx.conf             # File to configure nginx 
 │   └── scripts.js
 ├── README.md                  # Readme
-│── docker-compose.yml         # Configurations
+│── docker-compose.yml         # Configurations MAIN
+│── docker-compose-dev.yml     # For tests and push dockerhub 
 └── .gitignore                 # Ignore unnecessary files
 ```
 
@@ -99,12 +100,21 @@ You can run the pre-built Docker containers for both the backend and frontend us
 
 #### 1. **Run the containers**:
 
-   Simply run the following command to start the application using Docker Compose:
+   Simply run the following commands to start the application using Docker Compose:
+
+1. Clone the repository
 
    ```bash
-git clone https://github.com/RicardoCR98/Pico-Placa-Predictor.git
-cd Pico-Plate-Predictor
-docker-compose up
+    git clone https://github.com/RicardoCR98/Pico-Placa-Predictor.git
+   ```
+2. Enter the Pico-Placa-Predictor folder
+   
+   ```bash
+    cd Pico-Placa-Predictor
+   ```
+3. Run docker-compose
+   ```bash
+    docker-compose up
    ```
 
    - This will download the images from Docker Hub and run the frontend and backend containers, exposing the backend on port **8080** and the frontend on port **80**.
