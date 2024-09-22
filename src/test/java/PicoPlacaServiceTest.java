@@ -42,9 +42,7 @@ public class PicoPlacaServiceTest {
     @Test
     public void testInvalidIputs(){
         PredictionRequest request = new PredictionRequest("AA-1234","17-09-2024","10:00");
-        InvalidInputException exception = assertThrows(InvalidInputException.class, () -> {
-            picoPlacaService.canDrive(request);
-        });
+        InvalidInputException exception = assertThrows(InvalidInputException.class, () -> picoPlacaService.canDrive(request));
         assertEquals("Invalid Format", exception.getMessage());
     }
 }

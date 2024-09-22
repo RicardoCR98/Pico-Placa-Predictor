@@ -5,7 +5,6 @@ public class PredictionResponse {
     private boolean canDrive;
     private String message;
 
-
     public PredictionResponse(boolean canDrive, String message) {
         this.canDrive = canDrive;
         this.message = message;

@@ -1,6 +1,5 @@
 package org.stackbuilder.service;
 
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.stackbuilder.exception.InvalidInputException;
 import org.stackbuilder.model.PredictionRequest;
@@ -55,20 +54,14 @@ public class PicoPlacaService {
 
     private boolean isPlateRestricted(int lastDigit, DayOfWeek dayOfWeek) {
         //Here apply the rule for days and digit
-        switch (dayOfWeek){
-            case MONDAY:
-                return lastDigit == 1 || lastDigit == 2;
-            case TUESDAY:
-                return lastDigit == 3 || lastDigit == 4;
-            case WEDNESDAY:
-                return lastDigit == 5 || lastDigit == 6;
-            case THURSDAY:
-                return lastDigit == 7 || lastDigit == 8;
-            case FRIDAY:
-                return lastDigit == 9 || lastDigit == 0;
-            default:
-                return false;
-        }
+        return switch (dayOfWeek) {
+            case MONDAY -> lastDigit == 1 || lastDigit == 2;
+            case TUESDAY -> lastDigit == 3 || lastDigit == 4;
+            case WEDNESDAY -> lastDigit == 5 || lastDigit == 6;
+            case THURSDAY -> lastDigit == 7 || lastDigit == 8;
+            case FRIDAY -> lastDigit == 9 || lastDigit == 0;
+            default -> false;
+        };
     }
 
 
