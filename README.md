@@ -4,15 +4,28 @@ This project is an application designed to predict whether a vehicle can circula
 
 ## Table of Contents
 
-1. [Technologies Used](#technologies-used)
-2. [Architecture](#architecture)
-3. [Project Structure](#project-structure)
-4. [Prerequisites](#prerequisites)
-5. [Installation](#installation)
-6. [Configuration](#configuration)
-7. [Running the Application](#running-the-application)
-8. [API Documentation](#api-documentation)
-9. [Automated Testing](#automated-testing)
+- [Pico y Placa Backend](#pico-y-placa-backend)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Architecture](#architecture)
+    - [Key Layers](#key-layers)
+  - [Project Structure](#project-structure)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Running the Application](#running-the-application)
+    - [Using Maven](#using-maven)
+    - [Using the Executable JAR](#using-the-executable-jar)
+    - [Accessing the API](#accessing-the-api)
+  - [API Documentation](#api-documentation)
+    - [Endpoint: Predict Circulation](#endpoint-predict-circulation)
+      - [Request Body](#request-body)
+      - [Response](#response)
+      - [Example using `curl`](#example-using-curl)
+  - [Automated Testing](#automated-testing)
+    - [Testing Tools](#testing-tools)
+    - [Running Tests](#running-tests)
+    - [Test Cases](#test-cases)
 
 
 
@@ -21,6 +34,7 @@ This project is an application designed to predict whether a vehicle can circula
 - **Java**: Primary programming language.
 - **Spring Boot**: Framework for building the backend application.
 - **JUnit 5 & Mockito**: For unit and integration testing.
+- **HTML, CSS, JS, Bootstrap**: Design Frontend.
 - **Maven**: Dependency management and build tool.
 
 ## Architecture
@@ -40,21 +54,17 @@ The application follows a **N-layered architecture**, ensuring separation of con
 ## Project Structure
 
 ```
-Pico-Plate-Backend/
+Pico-Plate-Predictor/
+├── backend/                   # Backend (Spring Boot)
+│   ├── src/
+│   └── pom.xml
 │
-├── src.
-│ ├─── main.
-│ │ │ ├─── java.
-│ │ │ │ └─── org.stackbuilder
-│ │ │ │ ├─── controller         # REST API drivers.
-│ │ │ │ ├─── exception          # Custom exceptions and global handling.
-│ │ │ │ ├─── model              # Data models (requests/responses).
-│ │ │ │ ├─── service            # Business logic (services).
-│ │ │ │ └─── utils              # Utilities (date parse, validation).
-│ │ └─── resources              # Static resources and configurations.
-│ └─── test
-│ └─── java                     # Unit and integration tests.
-└─── .idea                      # Project configuration for IDEs.
+├── frontend/                  # Frontend (HTML, CSS, Bootstrap)
+│   ├── index.html
+│   ├── styles.css
+│   └── scripts.js
+├── README.md                  # Readme
+└── .gitignore                 # Ignore files unnecesary
 ```
 
 ## Prerequisites
