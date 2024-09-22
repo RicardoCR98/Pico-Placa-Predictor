@@ -10,7 +10,6 @@ import org.stackbuilder.model.PredictionResponse;
 import org.stackbuilder.service.PicoPlacaService;
 
 @RestController
-@RequestMapping("/api")
 public class PicoPlacaController {
 
     private final PicoPlacaService picoPlacaService;
