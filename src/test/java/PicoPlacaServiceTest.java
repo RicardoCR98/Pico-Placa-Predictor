@@ -6,8 +6,6 @@ import org.stackbuilder.model.PredictionRequest;
 import org.stackbuilder.model.PredictionResponse;
 import org.stackbuilder.service.PicoPlacaService;
 
-import java.time.format.DateTimeParseException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = PicoPlacaService.class)
