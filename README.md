@@ -1,9 +1,10 @@
-# Pico y Placa Backend
+# Pico y Placa Predictor
 
 This project is an application designed to predict whether a vehicle can circulate based on the **Pico y Placa** restrictions. The prediction is determined by the day of the week, the vehicle's license plate number, and the time of day.
 
 ## Table of Contents
-
+- [Pico y Placa Predictor](#pico-y-placa-predictor)
+  - [Table of Contents](#table-of-contents)
   - [Technologies Used](#technologies-used)
   - [Architecture](#architecture)
     - [Key Layers](#key-layers)
@@ -12,7 +13,9 @@ This project is an application designed to predict whether a vehicle can circula
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Running the Application](#running-the-application)
-    - [Download and Run Docker Containers](#download-and-run-docker-containers)
+    - [Run Docker Containers](#run-docker-containers)
+      - [1. **Run the containers**:](#1-run-the-containers)
+      - [2. **Access the application**:](#2-access-the-application)
   - [API Documentation](#api-documentation)
     - [Endpoint: Predict Circulation](#endpoint-predict-circulation)
       - [Request Body](#request-body)
@@ -22,6 +25,7 @@ This project is an application designed to predict whether a vehicle can circula
     - [Testing Tools](#testing-tools)
     - [Running Tests](#running-tests)
     - [Test Cases](#test-cases)
+    - [Screenshots](#screenshots)
 
 ---
 
@@ -38,7 +42,7 @@ This project is an application designed to predict whether a vehicle can circula
 
 The application follows an **N-layered architecture**, ensuring separation of concerns and scalability.
 
-![Architecture](https://github.com/user-attachments/assets/5330ef5c-7121-400b-9f0e-b164182ee75d)
+![Architecture](/Images/Readme_Architecture.png)
 
 ### Key Layers
 
@@ -54,11 +58,14 @@ The application follows an **N-layered architecture**, ensuring separation of co
 Pico-Plate-Predictor/
 ├── backend/                   # Backend (Spring Boot)
 │   ├── src/
+│   ├── Dockerfile             # Backend Dockerfile 
 │   └── pom.xml
 │
 ├── frontend/                  # Frontend (HTML, CSS, Bootstrap)
 │   ├── index.html
 │   ├── styles.css
+│   ├── Dockerfile             # Frontend Dockerfile
+│   ├── nginx.conf             # File to configure nginx 
 │   └── scripts.js
 ├── README.md                  # Readme
 │── docker-compose.yml         # Configurations
@@ -69,7 +76,7 @@ Pico-Plate-Predictor/
 
 Before you begin, ensure you have the following installed:
 
-- **Docker**: Install Docker on your machine. [Docker Installation Guide](https://docs.docker.com/get-docker/).
+- **Docker**: Install Docker on your machine. [Download Docker](https://www.docker.com/products/docker-desktop/).
 
 ## Installation
 
@@ -86,31 +93,23 @@ No need to modify any configuration files as the project is pre-configured to ru
 
 ## Running the Application
 
-### Download and Run Docker Containers
+### Run Docker Containers
 
-Instead of building and running the application manually, you can run the pre-built Docker containers for both the backend and frontend.
+You can run the pre-built Docker containers for both the backend and frontend using Docker Compose.
 
-#### 1. **Download and run the backend container**:
+#### 1. **Run the containers**:
 
-   ```bash
-   docker pull ricardocr98/pico-placa-backend:latest
-   docker run -d -p 8080:8080 ricardocr98/pico-placa-backend:latest
-   ```
-
-   - This will download the backend image and run it in the background, exposing it on port **8080**.
-
-#### 2. **Download and run the frontend container**:
+   Simply run the following command to start the application using Docker Compose:
 
    ```bash
-   docker pull ricardocr98/pico-placa-frontend:latest
-   docker run -d -p 80:80 ricardocr98/pico-placa-frontend:latest
+   docker-compose up
    ```
 
-   - This will download the frontend image and run it, exposing it on port **80**.
+   - This will download the images from Docker Hub and run the frontend and backend containers, exposing the backend on port **8080** and the frontend on port **80**.
 
-#### 3. **Access the application**:
+#### 2. **Access the application**:
 
-   - **Backend**: Access the backend API at `http://localhost:8080`.
+   - **Backend**: Access the backend API at `http://localhost:8080/predict` (It is not necessary to enter the link directly unless you're making API requests).
    - **Frontend**: Open your browser and navigate to `http://localhost` to interact with the application.
 
 ## API Documentation
@@ -195,3 +194,17 @@ mvn test
 
 5. **Handling of Blank Inputs**
     - Checks the application's behavior when license plate number, date, or time fields are blank or null.
+
+
+### Screenshots
+
+
+![Allowed](/Images/Readme_Allowed.png)
+
+![Restricted](/Images/Readme_Invalid.png)
+
+
+
+
+
+![Invalid](/Images/Readme_Restricted.png)
