@@ -1,14 +1,14 @@
-# Usa una imagen oficial de Java como base
+# Use an official Java image as a base
 FROM openjdk:17-jdk-alpine
 
-# Establece el directorio de trabajo en /app
+# Set the working directory to /app
 WORKDIR /app
 
-# Copia el archivo JAR del backend en el contenedor
+# Copy the backend JAR file into the container
 COPY target/Pico-Placa-Predictor-1.0-SNAPSHOT.jar /app/backend.jar
 
-# Expone el puerto en el que correrá el backend
+# Expose the port on which the backend will run
 EXPOSE 8080
 
-# Comando para ejecutar el servidor al iniciar el contenedor
+# Command to run the server when starting the container
 CMD ["java", "-jar", "backend.jar"]
