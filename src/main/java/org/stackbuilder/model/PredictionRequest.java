@@ -2,7 +2,6 @@ package org.stackbuilder.model;
 
 public class PredictionRequest {
     //Represents the request, includes plate, date and time
-
     private String licensePlateNumber;
     private String date;
     private String time;
